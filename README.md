@@ -2,24 +2,14 @@
 
 This Home Assistant addon uses `acme.sh` to obtain SSL/TLS certificates from ZeroSSL or Let's Encrypt.
 
-## Latest feature
-
-[DNS alias mode](https://github.com/acmesh-official/acme.sh/wiki/DNS-alias-mode) support via the `dnschallengealias`
-configuration parameter.
-
 ## Configuration
 
-Tested with the *dns_oci* configuration but It should work, the `dnsEnvVariables` can be configured with any environment
-variable required for `acme.sh` to work.
-
+Tested with the *dns_oci* configuration but It should work, the `dnsEnvVariables` can be configured with any environment required for `acme.sh` to work.
 
 ```yaml
 accountemail: mail@example.com
-acmeprovider: zerossl
-domains:
-  - home.example.com
-dnsprovider: dns_oci
-dnschallengealias:
+domain: home.example.com
+dnsprovider: dns_cf
 dnsenvvars:
   - name: OCI_CLI_USER
     value: xxxx
@@ -42,17 +32,6 @@ fullchainfile: fullchain.pem
 keyfile: privkey.pem
 ```
 
-Valid values for `acmeprovider`:
-
-* `letsencrypt`
-* `letsencrypt_test`
-* `buypass`
-* `buypass_test`
-* `zerossl` (default)
-* `sslcom`
-* `google`
-* `googletest`
-
 ## Configure Home Assistant
 
 Add `ssl_certificate` and `ssl_key` to  `/config/configuration.yaml`:
@@ -67,6 +46,5 @@ http:
 
 ## About
 
-[`acme.sh`][acme_sh] is an ACME protocol client written purely in Shell (Unix shell) language.
-
-[acme_sh]: <https://github.com/acmesh-official/acme.sh>
+[acme.sh][acme.sh] an ACME protocol client written purely in Shell (Unix shell) language.
+[acme.sh]: <https://github.com/acmesh-official/acme.sh>
